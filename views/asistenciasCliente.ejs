@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Asistencias Cliente</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <button class="d-lg-none position-fixed hamburger-btn" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse">
+        <img src="/img/icon-hamburguesa.png" alt="Menú" class="hamburger-icon">
+    </button>
+
+    <div class="d-flex">
+        <!-- Barra lateral -->
+        <div class="sidebar min-vh-100 p-3 w-20 d-lg-block collapse" id="sidebarCollapse">
+            <!-- Título Cliente -->
+            <a class="d-flex text-decoration-none mt-3 mb-4 align-items-center text-white justify-content-center">
+                <span class="fs-4 d-none d-sm-inline">Cliente</span>
+            </a>
+            <ul class="nav nav-pills flex-column mt-4">
+                <!-- WILFER -->
+                <li class="nav-item py-2">
+                    <a href="/inicioCliente" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-usuario.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">OSMAN</span>
+                    </a>
+                </li>
+                <!-- Asistencias -->
+                <li class="nav-item py-2">
+                    <a href="/asistenciasCliente" class="nav-link active text-white d-flex align-items-center">
+                        <img src="/img/icon-asistencias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Asistencias</span>
+                    </a>
+                </li>
+                <!-- Membresias -->
+                <li class="nav-item py-2">
+                    <a href="/membresiasCliente" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-membresias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Membresias</span>
+                    </a>
+                </li>
+                <!-- Salir --- solo con "/" vuelves a la ruta principal del index--><!-- Salir -->
+                <li class="nav-item py-2">
+                    <a href="/" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-salir.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="flex-grow-1 p-4">
+            <!-- Título principal -->
+            <h2 class="text-center pb-2 fw-bold" style="color: var(--color-fondo-primario);">Registro de Asistencias
+            </h2>
+
+            <div class="text-center mb-4">
+                <p class="fs-5">Consulta tu historial completo de asistencias al gimnasio. Revisa tu frecuencia de
+                    entrenamiento y mantén tu motivación.</p>
+            </div>
+
+            <!-- Carta de total de asistencias (estructura que proporcionaste) -->
+            <div class="row mt-4">
+                <div class="col-12 col-md-6 mb-3 mx-auto"> <!-- Centrado con mx-auto -->
+                    <div class="card h-100 card-hover-success text-center p-3 shadow"
+                        style="border-radius: 15px; border: none;">
+                        <div class="card-body">
+                            <h4 class="mb-3 fw-bold" style="color: var(--color-fondo-primario);">Asistencias Totales
+                            </h4>
+                            <p class="fs-1 fw-bold mb-0" style="color: #2c3e50;">24</p>
+                            <p class="text-muted mt-2">en los últimos 30 días</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensaje motivacional adicional -->
+            <div class="text-center mt-4 p-3" style="background-color: #f8f9fa; border-radius: 10px;">
+                <p class="mb-0 fs-5">¡Llevas <strong>4 asistencias esta semana</strong>! Tu consistencia es admirable,
+                    sigue así para alcanzar tus metas.</p>
+            </div>
+
+
+            <div class="row mt-4 mb-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <img src="/img/icon-lupa.svg" alt="">
+                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar por Documento, Fecha, Rutina, etc.">
+                        <button class="btn btn-primary" type="button" id="btn-buscar">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <!-- Tercera Fila - Tabla -->
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Rutina</th>
+                                <th>Entrenador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01/02/2025</td>
+                                <td>08:30 AM</td>
+                                <td>Full Body</td>
+                                <td>Carlos Rodríguez</td>
+                            </tr>
+                            <tr>
+                                <td>01/02/2025</td>
+                                <td>09:15 AM</td>
+                                <td>Tren Superior</td>
+                                <td>María Gómez</td>
+                            </tr>
+                            <tr>
+                                <td>01/02/2025</td>
+                                <td>10:00 AM</td>
+                                <td>Tren Inferior</td>
+                                <td>Juan Pérez</td>
+                            </tr>
+                            <tr>
+                                <td>01/02/2025</td>
+                                <td>11:45 AM</td>
+                                <td>Core y Abdomen</td>
+                                <td>Ana Martínez</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center p-2" style="background-color: var(--color-fondo-primario);">
+        &copy; 2025 Panel de Control. Todos los derechos reservados.
+    </footer>
+
+</body>
+
+</html>

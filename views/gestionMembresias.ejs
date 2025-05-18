@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestion de Membresias</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <button class="d-lg-none position-fixed hamburger-btn" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse">
+        <img src="/img/icon-hamburguesa.png" alt="Menú" class="hamburger-icon">
+    </button>
+
+    <div class="d-flex">
+        <!-- Barra lateral -->
+        <div class="sidebar min-vh-100 p-3 w-20 d-lg-block collapse" id="sidebarCollapse">
+            <!-- Título Admin -->
+            <a class="d-flex text-decoration-none mt-3 mb-4 align-items-center text-white justify-content-center">
+                <span class="fs-4 d-none d-sm-inline">Admin</span>
+            </a>
+            <ul class="nav nav-pills flex-column mt-4">
+                <!-- WILFER -->
+                <li class="nav-item py-2">
+                    <a href="/inicioAdmin" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-usuario.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">WILFER</span>
+                    </a>
+                </li>
+                <!-- Clientes -->
+                <li class="nav-item py-2">
+                    <a href="/gestionClientes" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-clientes.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Clientes</span>
+                    </a>
+                </li>
+                <!-- Asistencias -->
+                <li class="nav-item py-2">
+                    <a href="/gestionAsistencias" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-asistencias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Asistencias</span>
+                    </a>
+                </li>
+                <!-- Membresias -->
+                <li class="nav-item py-2">
+                    <a href="/gestionMembresias" class="nav-link active text-white d-flex align-items-center">
+                        <img src="/img/icon-membresias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Membresias</span>
+                    </a>
+                </li>
+                <!-- Salir --- solo con "/" vuelves a la ruta principal del index-->
+                <li class="nav-item py-2">
+                    <a href="/" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-salir.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- 2 -->
+        <div class="flex-grow-1 p-4">
+            <h2 class="text-center pb-2 fw-bold" style="color: var(--color-fondo-primario);">Gestión de Membresias - GYM
+            </h2>
+
+            <div class="text-center mb-4">
+                <p class="fs-5">Administra las membresías de los clientes de manera eficiente. Aquí podrás verificar el
+                    estado de pago y mantener actualizada
+                    la información relacionada con los planes activos del gimnasio.</p>
+            </div>
+
+            <!-- Tarjetas de Estadísticas -->
+            <div class="row mt-4">
+                <!-- Tarjeta 1: Total Clientes -->
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card h-100 text-center p-3">
+                        <h4 class="mb-2 fw-bold">Total Membresias</h4>
+                        <p class="fs-1 fw-bold">4</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Clientes Activos -->
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card h-100 card card-hover-success text-center p-3">
+                        <h4 class="mb-2 fw-bold text-success">Monto Total</h4>
+                        <p class="fs-1 fw-bold text-success">$ 800.000</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Buscador -->
+            <div class="row mt-4 mb-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <img src="/img/icon-lupa.svg" alt="">
+                        </span>
+                        <input type="text" class="form-control"
+                            placeholder="Buscar por Documento, Fecha, Tipo Membresia, etc.">
+                        <button class="btn btn-primary" type="button" id="btn-buscar">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <!--Tabla -->
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Documento</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Estado</th>
+                                <th>Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>100745877</td>
+                                <td>Juan Pérez</td>
+                                <td>Básica</td>
+                                <td>01/02/2025</td>
+                                <td>28/02/2025</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td><span class="badge bg-success">Pagado</span></td>
+                            </tr>
+                            <tr>
+                                <td>100757877</td>
+                                <td>María Gómez</td>
+                                <td>Vip</td>
+                                <td>15/01/2025</td>
+                                <td>15/04/2025</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td><span class="badge bg-success">Pagado</span></td>
+                            </tr>
+                            <tr>
+                                <td>100675877</td>
+                                <td>Carlos Rodríguez</td>
+                                <td>Premium</td>
+                                <td>05/02/2025</td>
+                                <td>05/03/2025</td>
+                                <td><span class="badge bg-warning">Pendiente</span></td>
+                                <td><span class="badge bg-danger">Rechazada</span></td>
+                            </tr>
+                            <tr>
+                                <td>100775877</td>
+                                <td>Ana Martínez</td>
+                                <td>Básica</td>
+                                <td>01/01/2025</td>
+                                <td>31/12/2025</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                                <td><span class="badge bg-success">Pagado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center p-2" style="background-color: var(--color-fondo-primario);">
+        &copy; 2025 Panel de Control. Todos los derechos reservados.
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Membresías Cliente</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="/css/sweetalert2.min.css">
+
+<!-- SweetAlert2 js -->
+<link rel="stylesheet" href="/js/sweetalert2.min.js">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+    <button class="d-lg-none position-fixed hamburger-btn" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse">
+        <img src="/img/icon-hamburguesa.png" alt="Menú" class="hamburger-icon">
+    </button>
+
+    <div class="d-flex">
+        <!-- Barra lateral -->
+        <div class="sidebar min-vh-100 p-3 w-20 d-lg-block collapse" id="sidebarCollapse">
+            <a class="d-flex text-decoration-none mt-3 mb-4 align-items-center text-white justify-content-center">
+                <span class="fs-4 d-none d-sm-inline">Cliente</span>
+            </a>
+            <ul class="nav nav-pills flex-column mt-4">
+                <li class="nav-item py-2">
+                    <a href="/inicioCliente" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-usuario.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">OSMAN</span>
+                    </a>
+                </li>
+                <!-- Asistencias -->
+                <li class="nav-item py-2">
+                    <a href="/asistenciasCliente" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-asistencias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Asistencias</span>
+                    </a>
+                </li>
+                <!-- Membresias -->
+                <li class="nav-item py-2">
+                    <a href="/membresiasCliente" class="nav-link active text-white d-flex align-items-center">
+                        <img src="/img/icon-membresias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Membresías</span>
+                    </a>
+                </li>
+                <!-- Salir --- solo con "/" vuelves a la ruta principal del index-->
+                <li class="nav-item py-2">
+                    <a href="/" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-salir.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex-grow-1 p-4">
+            <!-- Título principal -->
+            <h2 class="text-center pb-2 fw-bold" style="color: var(--color-fondo-primario);">Estado de Membresías</h2>
+
+            <!-- Mensaje descriptivo -->
+            <div class="text-center mb-4">
+                <p class="fs-5">Consulta el estado actual de tus membresías, fechas de vencimiento y próximos pagos.</p>
+            </div>
+
+            <!-- Carta de membresía activa -->
+            <div class="row mt-4">
+                <div class="col-12 col-md-6 mb-3 mx-auto">
+                    <div class="card h-100  card-hover-success text-center p-3 shadow"
+                        style="border-radius: 15px; border: none;">
+                        <div class="card-body">
+                            <h4 class="mb-3 fw-bold" style="color: var(--color-fondo-primario);">Membresía Activa</h4>
+                            <p class="fs-1 fw-bold mb-0" style="color: #2c3e50;">Básica</p>
+                            <p class="text-muted mt-2">Válido hasta: <strong>30/05/2025</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensaje motivacional -->
+            <div class="text-center mt-4 p-3" style="background-color: #f8f9fa; border-radius: 10px;">
+                <p class="mb-0 fs-5">¡Tu membresía está activa! Aprovéchala al máximo y no olvides renovarla a tiempo.
+                </p>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="row mt-4 mb-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <img src="/img/icon-lupa.svg" alt="">
+                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar por fecha, tipo de plan, estado...">
+                        <button class="btn btn-primary" type="button" id="btn-buscar">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla -->
+            <div class="card-body">
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Fecha de Inicio</th>
+                                <th>Fecha de Fin</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01/04/2025</td>
+                                <td>30/04/2025</td>
+                                <td>Básica</td>
+                                <td><span class="badge bg-danger">Expirada</span></td>
+                            </tr>
+                            <tr>
+                                <td>01/05/2025</td>
+                                <td>30/05/2025</td>
+                                <td>Básica</td>
+                                <td><span class="badge bg-success">Activa</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <!-- Tipos de Membresía -->
+            <div class="container mt-5">
+                <h2 class="text-center pb-4  fw-bold" style="color: var(--color-fondo-primario);">Tipos de Membresías
+                </h2>
+
+                <div class="row text-center">
+                    <!-- Básica -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img src="/img/icon-membresia-basica.png" alt="Básica" class="mb-3"
+                                    style="height: 40px;">
+                                <h5 class="card-title fw-bold">Básica</h5>
+                                <p class="card-text">Acceso a contenido exclusivo, descuentos especiales y soporte
+                                    prioritario.</p>
+                                <p class="fw-bold text-primary">$100.000</p>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modalBasica">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premium -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img src="/img/icon-membresia-premium.png" alt="Premium" class="mb-3"
+                                    style="height: 40px;">
+                                <h5 class="card-title fw-bold">Premium</h5>
+                                <p class="card-text">Beneficios avanzados como contenido exclusivo, acceso anticipado a
+                                    eventos y
+                                    descuentos.</p>
+                                <p class="fw-bold text-primary">$200.000</p>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modalPremium">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plan VIP -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img src="/img/icon-membresia-vip.png" alt="VIP" class="mb-3" style="height: 40px;">
+                                <h5 class="card-title fw-bold">Vip</h5>
+                                <p class="card-text">Disfruta de todas las ventajas de nuestra plataforma, incluyendo
+                                    atención
+                                    prioritaria y
+                                    contenido ilimitado.</p>
+                                <p class="fw-bold text-primary">$300.000</p>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modalVip">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Primer Modal Confirmar compra -->
+
+  <!-- Modal Básica -->
+  <div class="modal fade" id="modalBasica" tabindex="-1" aria-labelledby="modalBasicaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalBasicaLabel">Comprar Membresía Básica</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          Estás a punto de comprar la membresía Básica por <strong>$100.000</strong>. ¿Deseas continuar?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#modalPagoBasica">Confirmar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Premium -->
+  <div class="modal fade" id="modalPremium" tabindex="-1" aria-labelledby="modalPremiumLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPremiumLabel">Comprar Membresía Premium</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          Estás a punto de comprar la membresía Premium por <strong>$200.000</strong>. ¿Deseas continuar?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#modalPagoPremium">Confirmar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal VIP -->
+  <div class="modal fade" id="modalVip" tabindex="-1" aria-labelledby="modalVipLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalVipLabel">Comprar Membresía VIP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          Estás a punto de comprar la membresía VIP por <strong>$300.000</strong>. ¿Deseas continuar?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#modalPagoVip">Confirmar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Fin primera parte -->
+
+
+  <!-- Modal Simulado de Pago -->
+  <div class="modal fade" id="modalPagoBasica" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPagoLabel">Simulación de pago - Membresía Básica</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formPagoBasica">
+            <div class="mb-3">
+              <label for="nombreTitular" class="form-label">Nombre del Titular</label>
+              <input type="text" class="form-control" id="nombreTitular" required>
+            </div>
+            <div class="mb-3">
+              <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+              <input type="text" class="form-control" id="numeroTarjeta" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="fechaExp" class="form-label">Fecha de Expiración</label>
+                <input type="text" class="form-control" id="fechaExp" placeholder="MM/AA" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Pagar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+ <!-- Modal Simulado de Pago -->
+  <div class="modal fade" id="modalPagoPremium" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPagoLabel">Simulación de pago - Membresía Premium</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formPagoPremium">
+            <div class="mb-3">
+              <label for="nombreTitular" class="form-label">Nombre del Titular</label>
+              <input type="text" class="form-control" id="nombreTitular" required>
+            </div>
+            <div class="mb-3">
+              <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+              <input type="text" class="form-control" id="numeroTarjeta" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="fechaExp" class="form-label">Fecha de Expiración</label>
+                <input type="text" class="form-control" id="fechaExp" placeholder="MM/AA" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Pagar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Simulado de Pago -->
+  <div class="modal fade" id="modalPagoVip" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPagoLabel">Simulación de pago - Membresía Vip</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formPagoVip">
+            <div class="mb-3">
+              <label for="nombreTitular" class="form-label">Nombre del Titular</label>
+              <input type="text" class="form-control" id="nombreTitular" required>
+            </div>
+            <div class="mb-3">
+              <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+              <input type="text" class="form-control" id="numeroTarjeta" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="fechaExp" class="form-label">Fecha de Expiración</label>
+                <input type="text" class="form-control" id="fechaExp" placeholder="MM/AA" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Pagar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center p-2" style="background-color: var(--color-fondo-primario, #1e3932);">
+        &copy; 2025 Panel de Control. Todos los derechos reservados.
+    </footer>
+
+    <script>
+    document.getElementById('formPagoBasica').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('modalPagoBasica'));
+      modal.hide();
+
+      // Simular procesamiento
+      Swal.fire({
+        title: 'Procesando pago...',
+        text: 'Espere un momento',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading()
+        },
+        timer: 2000
+      }).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Pago exitoso!',
+          text: 'Tu membresía ha sido activada. ¡Disfrútala al máximo!',
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.getElementById('formPagoPremium').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('modalPagoPremium'));
+      modal.hide();
+
+      // Simular procesamiento
+      Swal.fire({
+        title: 'Procesando pago...',
+        text: 'Espere un momento',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading()
+        },
+        timer: 2000
+      }).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Pago exitoso!',
+          text: 'Tu membresía ha sido activada. ¡Disfrútala al máximo!',
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.getElementById('formPagoVip').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('modalPagoVip'));
+      modal.hide();
+
+      // Simular procesamiento
+      Swal.fire({
+        title: 'Procesando pago...',
+        text: 'Espere un momento',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading()
+        },
+        timer: 2000
+      }).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Pago exitoso!',
+          text: 'Tu membresía ha sido activada. ¡Disfrútala al máximo!',
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestion de Asistencias</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <button class="d-lg-none position-fixed hamburger-btn" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse">
+        <img src="/img/icon-hamburguesa.png" alt="Menú" class="hamburger-icon">
+    </button>
+
+    <div class="d-flex">
+        <!-- Barra lateral -->
+        <div class="sidebar min-vh-100 p-3 w-20 d-lg-block collapse" id="sidebarCollapse">
+            <!-- Título Admin -->
+            <a class="d-flex text-decoration-none mt-3 mb-4 align-items-center text-white justify-content-center">
+                <span class="fs-4 d-none d-sm-inline">Admin</span>
+            </a>
+            <ul class="nav nav-pills flex-column mt-4">
+                <!-- WILFER -->
+                <li class="nav-item py-2">
+                    <a href="/inicioAdmin" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-usuario.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">WILFER</span>
+                    </a>
+                </li>
+                <!-- Clientes -->
+                <li class="nav-item py-2">
+                    <a href="/gestionClientes" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-clientes.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Clientes</span>
+                    </a>
+                </li>
+                <!-- Asistencias -->
+                <li class="nav-item py-2">
+                    <a href="/gestionAsistencias" class="nav-link active text-white d-flex align-items-center">
+                        <img src="/img/icon-asistencias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Asistencias</span>
+                    </a>
+                </li>
+                <!-- Membresias -->
+                <li class="nav-item py-2">
+                    <a href="/gestionMembresias" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-membresias.png" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Membresias</span>
+                    </a>
+                </li>
+                <!-- Salir --- solo con "/" vuelves a la ruta principal del index-->
+                <li class="nav-item py-2">
+                    <a href="/" class="nav-link text-white d-flex align-items-center">
+                        <img src="/img/icon-salir.svg" alt="" class="icon-sidebar">
+                        <span class="fs-5 ms-2 d-none d-sm-inline">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- 2 -->
+        <div class="flex-grow-1 p-4">
+            <h2 class="text-center pb-2 fw-bold" style="color: var(--color-fondo-primario);">Gestión de Asistencias -
+                GYM
+            </h2>
+
+            <div class="text-center mb-4">
+                <p class="fs-5">Registra y lleva control de las asistencias de los clientes. Mantén un historial claro y
+                    actualizado de cada ingreso al
+                    gimnasio.</p>
+            </div>
+
+            <!-- Tarjetas de Estadísticas -->
+            <div class="row mt-4">
+                <!-- Tarjeta 1: Total Asistencias -->
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card h-100 text-center p-3 card-hover-attendance">
+                        <h4 class="mb-2 fw-bold">Total Asistencias</h4>
+                        <p class="fs-1 fw-bold">4</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Rutina Más Demandada -->
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card h-100 text-center p-3 card-hover-routine">
+                        <h4 class="mb-2 fw-bold text-warning">Rutina Más Demandada</h4>
+                        <p class="fs-1 fw-bold text-warning">Full Body</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Formulario -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="mb-4 fw-bold">Nueva Asistencia</h5>
+                    <form method="post" action="procesar_cliente.php">
+                        <div class="row g-3">
+                            <!-- Primera fila -->
+                            <div class="col-md-4">
+                                <label for="documento_cliente" class="form-label fw-bold">Documento del Cliente</label>
+                                <input type="text" class="form-control" id="documento_cliente" name="documento_cliente"
+                                    placeholder="Número de documento del cliente" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="fecha_ingreso" class="form-label fw-bold">Fecha de Ingreso</label>
+                                <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso"
+                                    required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="hora_ingreso" class="form-label fw-bold">Hora de Ingreso</label>
+                                <input type="time" class="form-control" id="hora_ingreso" name="hora_ingreso" required>
+                            </div>
+
+                            <!-- Segunda fila -->
+                            <div class="col-md-6">
+                                <label for="rutina" class="form-label fw-bold">Rutina</label>
+                                <select class="form-select" id="rutina" name="rutina" required>
+                                    <option value="" selected>Seleccionar rutina...</option>
+                                    <option value="rutina1">Full Body</option>
+                                    <option value="rutina2">Tren Superior</option>
+                                    <option value="rutina3">Tren Inferior</option>
+                                    <option value="rutina4">Core y Abdomen</option>
+                                    <option value="rutina5">Rutina Personalizada</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="entrenador" class="form-label fw-bold">Entrenador</label>
+                                <select class="form-select" id="entrenador" name="entrenador" required>
+                                    <option value="" selected>Seleccionar entrenador...</option>
+                                    <option value="entrenador1">Juan Pérez</option>
+                                    <option value="entrenador2">María Gómez</option>
+                                    <option value="entrenador3">Carlos Rodríguez</option>
+                                </select>
+                            </div>
+
+                            <!-- Botón de registro -->
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-primary px-4">Registrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Buscador -->
+            <div class="row mt-4 mb-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <img src="/img/icon-lupa.svg" alt="">
+                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar por Documento, Fecha, Rutina, etc.">
+                        <button class="btn btn-primary" type="button" id="btn-buscar">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <!-- Tabla -->
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Documento</th>
+                                <th>Fecha Ingreso</th>
+                                <th>Hora Ingreso</th>
+                                <th>Rutina</th>
+                                <th>Entrenador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>100745877</td>
+                                <td>01/02/2025</td>
+                                <td>08:30 AM</td>
+                                <td>Full Body</td>
+                                <td>Carlos Rodríguez</td>
+                            </tr>
+                            <tr>
+                                <td>100757877</td>
+                                <td>01/02/2025</td>
+                                <td>09:15 AM</td>
+                                <td>Tren Inferior</td>
+                                <td>María Gómez</td>
+                            </tr>
+                            <tr>
+                                <td>100675877</td>
+                                <td>01/02/2025</td>
+                                <td>10:00 AM</td>
+                                <td>Full Body</td>
+                                <td>Juan Pérez</td>
+                            </tr>
+                            <tr>
+                                <td>100775877</td>
+                                <td>01/02/2025</td>
+                                <td>11:45 AM</td>
+                                <td>Rutina Personalizada</td>
+                                <td>Ana Martínez</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white text-center p-2" style="background-color: var(--color-fondo-primario);">
+        &copy; 2025 Panel de Control. Todos los derechos reservados.
+    </footer>
+
+</body>
+
+</html>
