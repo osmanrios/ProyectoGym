@@ -16,6 +16,12 @@
 </head>
 
 <body>
+
+    <div id="alertBienvenida" class="alert alert-success alert-dismissible fade show text-center" role="alert"
+        style="display:none;">
+        <strong>¡Bienvenido!</strong> Has iniciado sesión correctamente como Administrador.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
     <button class="d-lg-none position-fixed hamburger-btn" type="button" data-bs-toggle="collapse"
         data-bs-target="#sidebarCollapse">
         <img src="/img/icon-hamburguesa.png" alt="Menú" class="hamburger-icon">
@@ -193,6 +199,8 @@
     <footer class="text-white text-center p-2" style="background-color: var(--color-fondo-primario);">
         &copy; 2025 Panel de Control. Todos los derechos reservados.
     </footer>
+    
+    <script src="/js/loginalert.js"></script>
 
 </body>
 
