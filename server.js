@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true })); // Necesario para leer datos de
 const users = [
     { email: 'admin@gmail.com', password: '123', role: 'admin' },
     { email: 'cliente1@gmail.com', password: '123', role: 'cliente' },
-    { email: 'cliente2@gmail.com', password: 'abc', role: 'cliente' },
+    { email: 'osman@gmail.com', password: '123', role: 'cliente' },
 ];
 
 app.post('/login', (req, res) => {
